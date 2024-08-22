@@ -7,4 +7,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Ubuntu", sans-serif;
+  background-color: #eff5ff;
 }

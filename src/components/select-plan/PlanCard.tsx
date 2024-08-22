@@ -25,7 +25,7 @@ const selection = [
 const PlanCard = () => {
   const { openCard, handleOpenCard } = usePlan();
   return (
-    <section className="mx-5 mb-9 flex -translate-y-[4rem] flex-col gap-4 rounded-xl bg-[#fff] px-5 py-9 shadow-md transition-all duration-150">
+    <section className="mx-5 mb-9 flex -translate-y-[3.5rem] flex-col gap-3 rounded-xl bg-[#fff] px-5 py-9 shadow-md transition-all duration-150">
       <div className="flex flex-col gap-6">
         <span className="flex flex-col gap-2">
           <h1 className="text-2xl font-bold text-[#022959]">

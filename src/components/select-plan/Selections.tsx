@@ -1,11 +1,12 @@
 import React from "react";
 import { usePlan } from "../../contexts/PlanContexts";
 
-interface Selections {
+export interface Selections {
   image?: string;
   title?: string;
   duration: number;
   offer?: string;
+  yearly?: number;
 }
 
 const Selections: React.FC<Selections> = ({
@@ -13,6 +14,7 @@ const Selections: React.FC<Selections> = ({
   title,
   duration,
   offer,
+  yearly,
 }) => {
   const { openCard } = usePlan();
   return (
@@ -23,7 +25,7 @@ const Selections: React.FC<Selections> = ({
           {title}
         </span>
         <div className="text-sm text-[#9699AA]">
-          <span>${openCard ? duration * 10 : duration} </span>
+          <span>${openCard ? yearly : duration} </span>
           <span> /{openCard ? "yr" : "mo"}</span>
         </div>
         <span

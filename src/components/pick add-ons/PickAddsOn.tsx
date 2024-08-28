@@ -1,7 +1,14 @@
-// import React from "react";
+// import BottomNavCard from "../select-plan/BottomNavCard";
+import PickAddBottomNav from "./PickAddBottomNav";
+import PickAdsCard from "./PickAdsCard";
 
 const PickAddsOn = () => {
-  return <div>PickAddsOn</div>;
+  return (
+    <>
+      <PickAdsCard />
+      <PickAddBottomNav />
+    </>
+  );
 };
 
 export default PickAddsOn;

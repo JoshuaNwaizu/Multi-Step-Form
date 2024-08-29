@@ -109,6 +109,7 @@ const initialState: InitialState = {
   selectionData: selection.map((item, i) => ({
     ...item,
     isChecked: i === 0 ? true : false,
+    navToogle: false,
   })),
 };
 

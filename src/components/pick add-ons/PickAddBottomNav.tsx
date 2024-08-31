@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PickAddBottomNav = () => {
   return (
@@ -9,9 +10,11 @@ const PickAddBottomNav = () => {
         </button>
       </div>
       <div>
-        <button className="rounded bg-[#022959] px-3 py-2 text-sm capitalize text-[#fff]">
-          next step
-        </button>
+        <Link to={"/finishing-up"}>
+          <button className="rounded bg-[#022959] px-3 py-2 text-sm capitalize text-[#fff]">
+            next step
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { navNum, usePlan } from "../contexts/PlanContexts";
 
 const NavBar = () => {
-  const { toggleNav, handleToggleNav } = usePlan();
+  const { handleToggleNav } = usePlan();
   const location = useLocation();
   const pathName = location.pathname;
 

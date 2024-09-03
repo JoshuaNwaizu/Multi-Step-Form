@@ -1,11 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const PickAddBottomNav = () => {
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate("/select-plan");
+  };
   return (
     <div className="fixed bottom-0 left-0 right-0 flex h-[4.5rem] items-center justify-between border-t border-t-[#acafbe] bg-[#fff] px-4">
       <div>
-        <button className="px-3 py-2 text-sm capitalize text-[#9699AA]">
+        <button
+          className="px-3 py-2 text-sm capitalize text-[#9699AA]"
+          onClick={handleGoBack}
+        >
           go back
         </button>
       </div>

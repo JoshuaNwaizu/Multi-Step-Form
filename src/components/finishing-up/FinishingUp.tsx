@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import BottomNavCard from "../select-plan/BottomNavCard";
 import FinishingUpCard from "./FinishingUpCard";
 
+
 const FinishingUp = () => {
   const navigate = useNavigate();
 
@@ -11,7 +12,7 @@ const FinishingUp = () => {
   return (
     <>
       <FinishingUpCard />
-      <BottomNavCard next="confirm" onClick={handleGoBack} to={"/"} />
+      <BottomNavCard next="confirm" onClick={handleGoBack} to={"/confirm"} />
     </>
   );
 };

@@ -14,7 +14,7 @@ const NavBar = () => {
             <Link
               to={item.link}
               onClick={() => handleToggleNav(i)}
-              className={`flex h-[33px] w-[33px] items-center justify-center rounded-full border p-2 text-sm ${pathName === item.link ? "bg-[#fff] text-[#022959]" : "border-[#fff] text-[#fff]"}`}
+              className={`flex h-[33px] w-[33px] items-center justify-center rounded-full border p-2 text-sm ${i === 3 && pathName === "/confirm" ? "bg-[#fff] text-black" : "border-[#fff] text-[#fff]"} ${pathName === item.link ? "bg-[#fff] text-black" : "border-[#fff] text-[#fff]"}`}
             >
               {item.position}
             </Link>

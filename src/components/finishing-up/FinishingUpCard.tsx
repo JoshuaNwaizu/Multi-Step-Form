@@ -8,9 +8,7 @@ const FinishingUpCard = () => {
       ? total + (openCard ? item.yearly : item.monthly)
       : total;
   }, 0);
-  // const totalSelection = selectionData.map((item) =>
-  //   item.isChecked ? item.yearly : item.duration,
-  // );
+
   return (
     <section className="mx-5 -translate-y-[3rem] rounded-xl bg-[#fff] px-5 py-9">
       <div className="flex flex-col gap-6">

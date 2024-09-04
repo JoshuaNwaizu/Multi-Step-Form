@@ -14,6 +14,7 @@ interface InitialState {
   toggleAddOns: boolean;
   pickAdsData: PickAdd[];
   selectionData: Selections[];
+  openConfirmPage: boolean;
 }
 interface PickAdd {
   title: string;
@@ -33,6 +34,8 @@ interface ContextsData {
   pickAdsData: PickAdd[];
   selectionData: Selections[];
   handleToggleSelectPlan: (num: number) => void;
+  openConfirmPage: boolean;
+  dispatch: React.Dispatch<PlanAction>;
 }
 
 interface PlanAction {
@@ -111,6 +114,7 @@ const initialState: InitialState = {
     isChecked: i === 0 ? true : false,
     navToogle: false,
   })),
+  openConfirmPage: false,
 };
 
 const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
@@ -146,6 +150,8 @@ const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
           : { ...item, isChecked: false },
       );
       return { ...state, selectionData: toggleSelectPlan };
+    case "openConfirmPage/finalPage":
+      return { ...state, openConfirmPage: true };
 
     default:
       return state;
@@ -154,8 +160,14 @@ const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
 
 const PlanProvider: React.FC<Children> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { openCard, toggleNav, toggleAddOns, pickAdsData, selectionData } =
-    state;
+  const {
+    openCard,
+    toggleNav,
+    toggleAddOns,
+    pickAdsData,
+    selectionData,
+    openConfirmPage,
+  } = state;
 
   const handleOpenCard = () => {
     dispatch({ type: "opencard" });
@@ -181,6 +193,8 @@ const PlanProvider: React.FC<Children> = ({ children }) => {
         pickAdsData,
         selectionData,
         handleToggleSelectPlan,
+        dispatch,
+        openConfirmPage,
       }}
     >
       {children}

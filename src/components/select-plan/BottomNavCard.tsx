@@ -7,12 +7,14 @@ interface BottomNav {
   next?: string;
   onClick?: () => void;
   to: To;
+  onBtnClick?: () => void;
 }
 
 const BottomNavCard: React.FC<BottomNav> = ({
   back = "go back",
   next = " next step",
   onClick,
+  onBtnClick,
   to,
 }) => {
   const { selectionData } = usePlan();
@@ -35,6 +37,7 @@ const BottomNavCard: React.FC<BottomNav> = ({
               <button
                 className="rounded bg-[#022959] px-3 py-2 text-sm capitalize text-[#fff]"
                 disabled={item.isChecked === false && true}
+                onClick={onBtnClick}
               >
                 {next}
               </button>

@@ -5,6 +5,7 @@ import PickAddsOn from "./components/pick add-ons/PickAddsOn";
 
 import SelectPlan from "./components/select-plan/SelectPlan";
 import Layout from "./components/Layout";
+import Confirm from "./components/finishing-up/Confirm";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/finishing-up",
         element: <FinishingUp />,
+      },
+      {
+        path: "/confirm",
+        element: <Confirm />,
       },
     ],
   },

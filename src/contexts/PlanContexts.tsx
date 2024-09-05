@@ -15,6 +15,13 @@ interface InitialState {
   pickAdsData: PickAdd[];
   selectionData: Selections[];
   openConfirmPage: boolean;
+  nameInput: string;
+  numberInput: string;
+  emailInput: string;
+  checkName: string;
+  checkNumber: string;
+  checkEmail: string;
+  confirmFirstPage: boolean;
 }
 interface PickAdd {
   title: string;
@@ -36,6 +43,13 @@ interface ContextsData {
   handleToggleSelectPlan: (num: number) => void;
   openConfirmPage: boolean;
   dispatch: React.Dispatch<PlanAction>;
+  nameInput: string;
+  checkName: string;
+  numberInput: string;
+  checkNumber: string;
+  emailInput: string;
+  checkEmail: string;
+  confirmFirstPage: boolean;
 }
 
 interface PlanAction {
@@ -115,6 +129,13 @@ const initialState: InitialState = {
     navToogle: false,
   })),
   openConfirmPage: false,
+  nameInput: "",
+  numberInput: "",
+  checkName: "",
+  checkNumber: "",
+  checkEmail: "",
+  emailInput: "",
+  confirmFirstPage: false,
 };
 
 const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
@@ -150,8 +171,56 @@ const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
           : { ...item, isChecked: false },
       );
       return { ...state, selectionData: toggleSelectPlan };
+
     case "openConfirmPage/finalPage":
       return { ...state, openConfirmPage: true };
+
+    case "nameInput/firstPage":
+      return {
+        ...state,
+        nameInput: action.payload,
+        checkName: action.payload.trim() === "" ? "This field is empty" : "",
+        confirmFirstPage:
+          action.payload.trim() !== "" &&
+          state.emailInput.trim() !== "" &&
+          state.numberInput.trim() !== "",
+      };
+
+    case "numberInput/firstPage":
+      return {
+        ...state,
+        numberInput: action.payload,
+        checkNumber:
+          action.payload.trim() === "" ? "This number field is empty" : "",
+        confirmFirstPage:
+          state.nameInput.trim() !== "" &&
+          state.emailInput.trim() !== "" &&
+          action.payload.trim() !== "",
+      };
+
+    case "emailInput/firstPage":
+      return {
+        ...state,
+        emailInput: action.payload,
+        checkEmail:
+          action.payload.trim() === "" ? "This email field is empty" : "",
+        confirmFirstPage:
+          state.nameInput.trim() !== "" &&
+          action.payload.trim() !== "" &&
+          state.numberInput.trim() !== "",
+      };
+
+    case "validateForm":
+      const isNameValid = state.nameInput.trim() !== "";
+      const isEmailValid = state.emailInput.trim() !== "";
+      const isNumberValid = state.numberInput.toString().trim() !== "";
+      return {
+        ...state,
+        checkName: isNameValid ? "" : "This name field is empty",
+        checkEmail: isEmailValid ? "" : "This email field is empty",
+        checkNumber: isNumberValid ? "" : "This number field is empty",
+        confirmFirstPage: isNameValid && isEmailValid && isNumberValid,
+      };
 
     default:
       return state;
@@ -167,6 +236,13 @@ const PlanProvider: React.FC<Children> = ({ children }) => {
     pickAdsData,
     selectionData,
     openConfirmPage,
+    nameInput,
+    checkName,
+    numberInput,
+    checkNumber,
+    emailInput,
+    checkEmail,
+    confirmFirstPage,
   } = state;
 
   const handleOpenCard = () => {
@@ -195,6 +271,13 @@ const PlanProvider: React.FC<Children> = ({ children }) => {
         handleToggleSelectPlan,
         dispatch,
         openConfirmPage,
+        nameInput,
+        checkName,
+        numberInput,
+        checkNumber,
+        checkEmail,
+        emailInput,
+        confirmFirstPage,
       }}
     >
       {children}

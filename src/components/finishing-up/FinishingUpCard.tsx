@@ -10,10 +10,12 @@ const FinishingUpCard = () => {
   }, 0);
 
   return (
-    <section className="mx-5 -translate-y-[3rem] rounded-xl bg-[#fff] px-5 py-9">
+    <section className="mx-5 -translate-y-[3rem] rounded-xl bg-[#fff] px-5 py-9 lg:w-[470px] lg:translate-y-[2rem] lg:shadow-none">
       <div className="flex flex-col gap-6">
         <span className="flex flex-col gap-2">
-          <h1 className="text-2xl font-bold text-[#022959]">Finishing up</h1>
+          <h1 className="text-2xl text-[2rem] font-bold text-[#022959]">
+            Finishing up
+          </h1>
           <p className="text-[1rem] leading-6 text-[#9699AA]">
             Double-check everything looks OK before confirming.
           </p>

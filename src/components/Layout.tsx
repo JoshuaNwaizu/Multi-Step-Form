@@ -3,10 +3,10 @@ import NavBar from "./NavBar";
 
 const Layout = () => {
   return (
-    <>
+    <main className="lg:flex lg:gap-[5rem]">
       <NavBar />
       <Outlet />
-    </>
+    </main>
   );
 };
 

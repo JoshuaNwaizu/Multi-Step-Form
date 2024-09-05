@@ -60,12 +60,18 @@ interface PlanAction {
 interface Children {
   children: React.ReactNode;
 }
+
+interface Nav {
+  position: number;
+  link: string;
+  name: string;
+}
 const PlanContext = createContext<ContextsData | undefined>(undefined);
-export const navNum = [
-  { position: 1, link: "/" },
-  { position: 2, link: "/select-plan" },
-  { position: 3, link: "/pick-adds-on" },
-  { position: 4, link: "/finishing-up" },
+export const navNum: Nav[] = [
+  { position: 1, link: "/", name: "your info" },
+  { position: 2, link: "/select-plan", name: "select plan" },
+  { position: 3, link: "/pick-adds-on", name: "add-on" },
+  { position: 4, link: "/finishing-up", name: "summary" },
 ];
 const pickAddOn: PickAdd[] = [
   {
@@ -73,7 +79,7 @@ const pickAddOn: PickAdd[] = [
     feature: "Access to multiplayer games",
     monthly: 1,
     yearly: 10,
-    checked: false,
+    checked: true,
   },
   {
     title: "Larger storage",
@@ -179,7 +185,7 @@ const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
       return {
         ...state,
         nameInput: action.payload,
-        checkName: action.payload.trim() === "" ? "This field is empty" : "",
+        checkName: action.payload.trim() === "" ? "This field is required" : "",
         confirmFirstPage:
           action.payload.trim() !== "" &&
           state.emailInput.trim() !== "" &&
@@ -191,7 +197,7 @@ const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
         ...state,
         numberInput: action.payload,
         checkNumber:
-          action.payload.trim() === "" ? "This number field is empty" : "",
+          action.payload.trim() === "" ? "This field is required" : "",
         confirmFirstPage:
           state.nameInput.trim() !== "" &&
           state.emailInput.trim() !== "" &&
@@ -203,7 +209,7 @@ const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
         ...state,
         emailInput: action.payload,
         checkEmail:
-          action.payload.trim() === "" ? "This email field is empty" : "",
+          action.payload.trim() === "" ? "This field is required" : "",
         confirmFirstPage:
           state.nameInput.trim() !== "" &&
           action.payload.trim() !== "" &&
@@ -216,9 +222,9 @@ const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
       const isNumberValid = state.numberInput.toString().trim() !== "";
       return {
         ...state,
-        checkName: isNameValid ? "" : "This name field is empty",
-        checkEmail: isEmailValid ? "" : "This email field is empty",
-        checkNumber: isNumberValid ? "" : "This number field is empty",
+        checkName: isNameValid ? "" : "This field is required",
+        checkEmail: isEmailValid ? "" : "This field is required",
+        checkNumber: isNumberValid ? "" : "This field is required",
         confirmFirstPage: isNameValid && isEmailValid && isNumberValid,
       };
 

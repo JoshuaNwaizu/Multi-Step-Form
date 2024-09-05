@@ -10,3 +10,11 @@
   font-family: "Ubuntu", sans-serif;
   background-color: #eff5ff;
 }
+@media (min-width: 769px) {
+  body {
+    background-color: #fff;
+  }
+  .bottom-nav {
+    width: calc(100% - 275px);
+  }
+}

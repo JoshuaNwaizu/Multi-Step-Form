@@ -32,10 +32,10 @@ const PlanCard = () => {
   const { openCard, handleOpenCard, selectionData, handleToggleSelectPlan } =
     usePlan();
   return (
-    <section className="mx-5 mb-9 flex -translate-y-[3.5rem] flex-col gap-3 rounded-xl bg-[#fff] px-5 py-9 shadow-md transition-all duration-150">
+    <section className="mx-5 mb-9 flex -translate-y-[3.5rem] flex-col gap-3 rounded-xl bg-[#fff] px-5 py-9 shadow-md transition-all duration-150 lg:w-[470px] lg:translate-y-[2rem] lg:shadow-none">
       <div className="flex flex-col gap-6">
         <span className="flex flex-col gap-2">
-          <h1 className="text-2xl font-bold text-[#022959]">
+          <h1 className="text-2xl font-bold text-[#022959] lg:text-[32px]">
             {" "}
             Select your plan
           </h1>
@@ -44,13 +44,13 @@ const PlanCard = () => {
           </p>
         </span>
       </div>
-      <div className="flex flex-col gap-7">
-        <span className="flex flex-col gap-3">
+      <div className="flex flex-col gap-6">
+        <span className="flex flex-col gap-3 lg:flex-row lg:gap-5">
           {selectionData.map((item, i) => (
             <div
               key={i}
               onClick={() => handleToggleSelectPlan(i)}
-              className={`flex items-center gap-3 rounded-lg border ${item.isChecked && "border-[#483EFF]"} px-3 py-3`}
+              className={`flex items-center gap-3 rounded-lg border lg:h-[160px] lg:w-[138px] lg:flex-col lg:items-start lg:gap-9 ${item.isChecked && "border-[#483EFF]"} px-3 py-3`}
             >
               <Selections
                 title={item.name}

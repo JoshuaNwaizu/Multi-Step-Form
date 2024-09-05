@@ -1,9 +1,9 @@
-import React from "react";
+
 
 const Confirm = () => {
   return (
-    <section className="mx-5 flex h-[400px] -translate-y-[3rem] justify-center rounded-xl bg-[#fff] px-5 py-9">
-      <div className="flex flex-col items-center justify-center gap-6 px-4 py-9">
+    <section className="mx-5 flex h-[400px] -translate-y-[3rem] justify-center rounded-xl bg-[#fff] px-5 py-9 lg:h-[70svh] lg:w-[470px] lg:translate-y-[2rem] lg:px-0 lg:shadow-none">
+      <div className="flex flex-col items-center justify-center gap-6 px-4 py-9 lg:ps-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="80"
@@ -24,7 +24,7 @@ const Confirm = () => {
         </svg>
         <span className="flex flex-col gap-2 text-center">
           <h1 className="text-2xl font-bold text-[#022959]">Thank you!</h1>
-          <p className="leading-6 text-[#9699AA]">
+          <p className="text-[1rem] leading-6 text-[#9699AA]">
             Thanks for confirming your subscription! We hope you have fun using
             our platform. If you ever need support, please feel free to email us
             at support@loremgaming.com.

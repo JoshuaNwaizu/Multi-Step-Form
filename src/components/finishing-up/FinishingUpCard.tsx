@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import { usePlan } from "../../contexts/PlanContexts";
 
 const FinishingUpCard = () => {
-  const { pickAdsData, openCard, handleOpenCard, selectionData } = usePlan();
+  const { pickAdsData, openCard, selectionData } = usePlan();
 
   const pickAdsTotal = pickAdsData.reduce((total, item) => {
     return item.checked
@@ -30,12 +31,15 @@ const FinishingUpCard = () => {
                     <h2 className="capitalize">
                       {item.name} ({openCard ? "Yearly" : "Monthly"})
                     </h2>
-                    <p
-                      className="cursor-pointer font-normal text-[#9699AA] underline"
-                      onClick={handleOpenCard}
-                    >
-                      Change
-                    </p>
+                    <Link to={"/select-plan"}>
+                      {" "}
+                      <p
+                        className="cursor-pointer font-normal text-[#9699AA] underline"
+                        // onClick={handleOpenCard}
+                      >
+                        Change
+                      </p>
+                    </Link>
                   </span>
                   <p className="">
                     ${openCard ? item.yearly : item.duration}/mo
@@ -60,15 +64,21 @@ const FinishingUpCard = () => {
             )}
           </div>
         </div>
-        <span className="flex items-center justify-between mx-4">
+        <span className="mx-4 flex items-center justify-between">
           <h2 className="text-[#9699AA]">
             Total (per {openCard ? "year" : "month"})
           </h2>
+          {/* <p className="text-[#022959]">
+            $
+            {pickAdsTotal +
+              selectionData.filter((item) => item.isChecked).length *
+                (openCard ? pickAdsTotal : 0)}
+          </p> */}
           {selectionData
             .filter((item) => item.isChecked)
             .map((item) => (
               <p className="font-bold text-[#022959]">
-                +{pickAdsTotal + (item.isChecked ? item.yearly : item.duration)}
+                +{pickAdsTotal + (openCard ? item.yearly : item.duration)}
                 /mo
               </p>
             ))}

@@ -79,7 +79,7 @@ const pickAddOn: PickAdd[] = [
     feature: "Access to multiplayer games",
     monthly: 1,
     yearly: 10,
-    checked: true,
+    checked: false,
   },
   {
     title: "Larger storage",
@@ -143,6 +143,8 @@ const initialState: InitialState = {
   emailInput: "",
   confirmFirstPage: false,
 };
+const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+const phoneNumberReg = /^(0|\+)\d{9,14}$/;
 
 const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
   switch (action.type) {
@@ -182,44 +184,67 @@ const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
       return { ...state, openConfirmPage: true };
 
     case "nameInput/firstPage":
+      const validName =
+        action.payload.trim() !== "" && action.payload.length >= 9;
+
       return {
         ...state,
         nameInput: action.payload,
-        checkName: action.payload.trim() === "" ? "This field is required" : "",
+        checkName: !validName ? "Invalid Input" : "",
         confirmFirstPage:
-          action.payload.trim() !== "" &&
+          validName &&
           state.emailInput.trim() !== "" &&
-          state.numberInput.trim() !== "",
+          state.emailInput.length >= 14 &&
+          state.numberInput.trim() !== "" &&
+          state.numberInput.length >= 9,
       };
 
     case "numberInput/firstPage":
+      const validNumber =
+        action.payload.trim() !== "" &&
+        phoneNumberReg.test(action.payload) &&
+        action.payload.length >= 9;
       return {
         ...state,
         numberInput: action.payload,
-        checkNumber:
-          action.payload.trim() === "" ? "This field is required" : "",
+        checkNumber: !validNumber ? "Invalid Input " : "",
         confirmFirstPage:
+          validNumber &&
           state.nameInput.trim() !== "" &&
+          state.nameInput.length >= 9 &&
           state.emailInput.trim() !== "" &&
-          action.payload.trim() !== "",
+          state.emailInput.length >= 14,
       };
 
     case "emailInput/firstPage":
+      const validEmail =
+        action.payload.trim() !== "" &&
+        emailReg.test(action.payload) &&
+        action.payload.length >= 14;
       return {
         ...state,
         emailInput: action.payload,
-        checkEmail:
-          action.payload.trim() === "" ? "This field is required" : "",
+        checkEmail: !validEmail ? "Invalid Input" : "",
         confirmFirstPage:
+          validEmail &&
           state.nameInput.trim() !== "" &&
-          action.payload.trim() !== "" &&
-          state.numberInput.trim() !== "",
+          state.nameInput.length >= 9 &&
+          state.numberInput.trim() !== "" &&
+          state.numberInput.length >= 9,
       };
 
     case "validateForm":
-      const isNameValid = state.nameInput.trim() !== "";
-      const isEmailValid = state.emailInput.trim() !== "";
-      const isNumberValid = state.numberInput.toString().trim() !== "";
+      const isNameValid =
+        state.nameInput.trim() !== "" && state.nameInput.length > 9;
+
+      const isEmailValid =
+        state.emailInput.trim() !== "" &&
+        emailReg.test(state.emailInput) &&
+        state.emailInput.length >= 14;
+
+      const isNumberValid =
+        state.numberInput.toString().trim() !== "" &&
+        state.numberInput.length >= 17;
       return {
         ...state,
         checkName: isNameValid ? "" : "This field is required",

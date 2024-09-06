@@ -1,7 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
+import { usePlan } from "../../contexts/PlanContexts";
 
 const PickAddBottomNav = () => {
+  const { pickAdsData } = usePlan();
+
   const navigate = useNavigate();
+  const addOnsChecked = pickAdsData.every((item) => !item.checked);
 
   const handleGoBack = () => {
     navigate("/select-plan");
@@ -18,7 +22,10 @@ const PickAddBottomNav = () => {
           </button>
         </div>
         <div>
-          <Link to={"/finishing-up"}>
+          <Link
+            to={!addOnsChecked ? "/finishing-up" : "#"}
+            className={`${addOnsChecked && "opacity-50 transition-opacity duration-200"}`}
+          >
             <button className="rounded bg-[#022959] px-3 py-2 text-sm capitalize text-[#fff]">
               next step
             </button>

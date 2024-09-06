@@ -1,6 +1,19 @@
-
+import { useEffect } from "react";
+import { NavigateFunction, useNavigate } from "react-router-dom";
+import { usePlan } from "../../contexts/PlanContexts";
 
 const Confirm = () => {
+  const navigate: NavigateFunction = useNavigate();
+  const { dispatch } = usePlan();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch({ type: "reset" });
+      navigate("/");
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
   return (
     <section className="mx-5 flex h-[400px] -translate-y-[3rem] justify-center rounded-xl bg-[#fff] px-5 py-9 lg:h-[70svh] lg:w-[470px] lg:translate-y-[2rem] lg:px-0 lg:shadow-none">
       <div className="flex flex-col items-center justify-center gap-6 px-4 py-9 lg:ps-1">

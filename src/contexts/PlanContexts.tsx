@@ -228,6 +228,28 @@ const reducer: React.Reducer<InitialState, PlanAction> = (state, action) => {
         confirmFirstPage: isNameValid && isEmailValid && isNumberValid,
       };
 
+    case "reset":
+      return {
+        ...state,
+        openCard: false,
+        toggleNav: 0,
+        toggleAddOns: false,
+        pickAdsData: pickAddOn,
+        selectionData: selection.map((item, i) => ({
+          ...item,
+          isChecked: i === 0 ? true : false,
+          navToogle: false,
+        })),
+        openConfirmPage: false,
+        nameInput: "",
+        numberInput: "",
+        checkName: "",
+        checkNumber: "",
+        checkEmail: "",
+        emailInput: "",
+        confirmFirstPage: false,
+      };
+
     default:
       return state;
   }

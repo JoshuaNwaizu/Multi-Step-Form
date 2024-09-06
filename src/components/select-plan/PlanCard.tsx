@@ -50,7 +50,7 @@ const PlanCard = () => {
             <div
               key={i}
               onClick={() => handleToggleSelectPlan(i)}
-              className={`flex items-center gap-3 rounded-lg border lg:h-[160px] lg:w-[138px] lg:flex-col lg:items-start lg:gap-9 ${item.isChecked && "border-[#483EFF]"} px-3 py-3`}
+              className={`flex items-center gap-3 rounded-lg border lg:h-[160px] lg:w-[138px] lg:flex-col lg:items-start lg:gap-9 ${item.isChecked && "border-[#483EFF] bg-[#F8F9FF]"} px-3 py-3 transition-all duration-200 hover:border-[#483EFF]`}
             >
               <Selections
                 title={item.name}

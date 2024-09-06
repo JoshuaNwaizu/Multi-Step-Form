@@ -1,8 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { navNum, usePlan } from "../contexts/PlanContexts";
 
-// const navInfo = ["your info", "select plan", "adds-ons", "summary"];
-
 const NavBar = () => {
   const { handleToggleNav } = usePlan();
   const location = useLocation();

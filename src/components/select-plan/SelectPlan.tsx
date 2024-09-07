@@ -10,7 +10,7 @@ const SelectPlan = () => {
     navigate(to);
   };
   return (
-    <div>
+    <div className="">
       <PlanCard />
       <BottomNavCard to="/pick-adds-on" onClick={() => handleGoBack("/")} />
     </div>

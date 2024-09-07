@@ -10,7 +10,7 @@
   font-family: "Ubuntu", sans-serif;
   background-color: #eff5ff;
 }
-@media (min-width: 769px) {
+@media (min-width: 1024px) {
   body {
     background-color: #fff;
   }

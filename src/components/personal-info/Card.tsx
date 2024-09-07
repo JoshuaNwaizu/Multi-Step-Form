@@ -12,7 +12,7 @@ const Card = () => {
     emailInput,
   } = usePlan();
   return (
-    <section className="-translate-y-[3rem] max-md:justify-center md:flex md:items-center lg:h-[470px] lg:translate-y-0">
+    <section className="-translate-y-[3rem] md:flex md:items-center md:justify-center lg:h-[470px] lg:translate-y-0">
       <section className="mx-5 rounded-xl bg-[#fff] px-5 py-9 md:flex md:w-[443px] md:items-center lg:w-[470px]">
         <div className="flex flex-col gap-6">
           <span className="flex flex-col gap-2">

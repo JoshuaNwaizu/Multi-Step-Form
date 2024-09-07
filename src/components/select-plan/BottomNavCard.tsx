@@ -21,7 +21,7 @@ const BottomNavCard: React.FC<BottomNav> = ({
 
   return (
     <div className="bottom-nav lg:-pl-9 fixed bottom-0 right-0 flex h-[4.5rem] items-center justify-between border-t border-t-[#acafbe] bg-[#fff] px-4 max-md:left-0 lg:justify-around lg:border-none lg:text-[1rem]">
-      <div className="bottom-nav lg:-pl-9 fixed bottom-0 right-0 flex h-[4.5rem] items-center justify-between border-t border-t-[#acafbe] bg-[#fff] px-4 max-md:left-0 lg:-translate-x-[4rem] lg:justify-evenly lg:border-none lg:text-[1rem] xl:-translate-x-[9rem]">
+      <div className="lg:-pl-9 fixed bottom-0 left-0 right-0 flex h-[4.5rem] items-center justify-between border-t border-t-[#acafbe] bg-[#fff] px-4 max-md:left-0 lg:justify-evenly lg:border-none lg:text-[1rem] xl:-translate-x-[9rem]">
         <div>
           <button
             className="hover: px-3 py-2 text-sm capitalize text-[#9699AA] transition-all duration-200 hover:text-[#022959]"

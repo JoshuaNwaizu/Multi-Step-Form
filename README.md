@@ -24,5 +24,3 @@ export default tseslint.config({
   },
 });
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.

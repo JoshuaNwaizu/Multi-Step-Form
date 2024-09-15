@@ -17,6 +17,5 @@ If you are developing a production application, we recommend updating the config
 export default tseslint.config({
   languageOptions: {
     // other options...
-    parserOptions: {
 
 ```

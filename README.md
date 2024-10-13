@@ -9,4 +9,4 @@ Currently, two official plugins are available:
 
 ## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend
+If you are developing a production application, we
